@@ -1,4 +1,5 @@
 #Final-Project
+
 To complete the cybersecurity bootcamp course, the final project was to act as a penetration tester and SOC analyst to exploit a vulnerable web server.
 
 - Create alarms and thresholds in the Elasticsearch Watcher
