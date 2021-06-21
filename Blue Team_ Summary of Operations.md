@@ -45,7 +45,7 @@ Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are pos
 **Monitoring the Targets**
 A scan reveals the ports and services running on the machine to show areas that could be used as potential points of entry for hackers.
   
-Scan results: (/Images/network_targets.jpg)
+Scan results: (Images/network_targets.jpg)
 
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
