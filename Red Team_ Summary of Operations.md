@@ -32,8 +32,9 @@ CVE-2014-0226 - allows remote attackers to cause a denial of service (heap-based
 overflow), or possibly obtain sensitive credential information or execute arbitrary code. The first vulnerability allows hackers to potentially access sensitive information. With the scan that was used to find vulnerabilities it will also give the bad actor directories marked as interesting highlighting that there may be something of use in those directories.
 
 
-CVE-2014-3503 - pertains to weak random values to generate passwords, which makes it easier for remote attackers to guess the password via a brute force attack. Password policies must be adhered to because many brute force attacks rely on simple password combinations to crack the account. Sometimes a brute force is not required as this user used their name as the password which is also unadvisable
-. 
+CVE-2014-3503 - pertains to weak random values to generate passwords, which makes it easier for remote attackers to guess the password via a brute force attack. Password policies must be adhered to because many brute force attacks rely on simple password combinations to crack the account. Sometimes a brute force is not required as this user used their name as the password which is also unadvisable.
+
+
 CVE-2000-0525 - OpenSSH does not properly drop privileges when the UseLogin option is enabled, which allows local users to execute arbitrary commands by providing the command to the ssh daemon. With an SSH connection that comes from an unknown IP address, the system can expose information that the hacker can further leverage to manipulate the system even more.
 
 (Images/target1_vulnscan.jpg)
