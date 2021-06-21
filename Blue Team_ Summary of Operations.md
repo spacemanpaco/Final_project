@@ -50,8 +50,8 @@ Scan results: (Images/network_targets.jpg)
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
 
-**Name of Alert 1**
-CPU Usage Monitor is implemented as follows:
+**CPU Usage Monitor is implemented as follows:**
+
 WHEN max() OF system.process.cpu.total.pct OVER all documents IS ABOVE 0.5 FOR THE LAST 5 minutes
   - **Metric**: When max() of system.process.cpu.total.pct over all documents 
   - **Threshold**: is above 0.5 for last 5 minutes
@@ -61,8 +61,8 @@ WHEN max() OF system.process.cpu.total.pct OVER all documents IS ABOVE 0.5 FOR T
 CPU Usage Results: (Images/CPU-alert.jpg)
 
 
-**Name of Alert 2**
-Excessive HTTP Errors is implemented as follows:
+**Excessive HTTP Errors is implemented as follows:**
+
 WHEN count() GROUPED OVER top 5 'http.response.status_code' IS ABOVE 400 FOR THE LAST 5 minutes
   - **Metric**: when count() grouped over top 5 http.response.status_code
   - **Threshold**: is above 400 for last 5 minutes
@@ -72,8 +72,8 @@ WHEN count() GROUPED OVER top 5 'http.response.status_code' IS ABOVE 400 FOR THE
 HTTP Errors Results: (Images/HTTP-errors.jpg)
 
 
-**Name of Alert 3**
-HTTP Request Size Monitor is implemented as follows:
+**HTTP Request Size Monitor is implemented as follows:**
+
 WHEN sum() of http.request.bytes OVER all documents IS ABOVE 3500 FOR THE LAST 1 minute
   - **Metric**: when sum() of http.request.bytes over all documents
   - **Threshold**: is above 3500 for last 1 minute
