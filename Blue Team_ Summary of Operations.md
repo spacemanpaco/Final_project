@@ -30,7 +30,7 @@ The following machines were identified on the network:
   - **Purpose**: Hosts vulnerable Wordpress server to be hacked
   - **IP Address**: 192.168.1.110
 
-Network Diagram: (/main/TargetEnvironment.pdf)
+Network Diagram: (main/TargetEnvironment.pdf)
   
 
 **Description of Targets**
