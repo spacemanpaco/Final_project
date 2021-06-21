@@ -30,7 +30,7 @@ The following machines were identified on the network:
   - **Purpose**: Hosts vulnerable Wordpress server to be hacked
   - **IP Address**: 192.168.1.110
 
-
+Network Diagram: (/main/TargetEnvironment.pdf)
   
 
 #Description of Targets
@@ -45,10 +45,7 @@ Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are pos
 #Monitoring the Targets
 A scan reveals the ports and services running on the machine to show areas that could be used as potential points of entry for hackers.
   
-
-
-
-
+Scan results: (/Images/network_targets.jpg)
 
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
@@ -61,7 +58,7 @@ WHEN max() OF system.process.cpu.total.pct OVER all documents IS ABOVE 0.5 FOR T
   - **Vulnerability Mitigated**: Designed to mitigate software that intentionally or unintentionally uses up CPU resources
   - **Reliability**: This alert is of high reliability because regular processes that take up CPU can also be monitored and configured.
   
-
+CPU Usage Results: (Images/CPU-alert.jpg)
 
 
 #Name of Alert 2
@@ -72,7 +69,7 @@ WHEN count() GROUPED OVER top 5 'http.response.status_code' IS ABOVE 400 FOR THE
   - **Vulnerability Mitigated**: Brute force/ Excessive enumeration on server
   - **Reliability**: This alert has high reliability because most 400 code errors are associated with users’ interaction with server/client and investigating them will help determine if they are malicious or not i.e. 401 and 403 are worth investigating compared to 404 or 400. Higher rates of these errors would also be suspicious.
   
-
+HTTP Errors Results: (Images/HTTP-errors.jpg)
 
 
 #Name of Alert 3
@@ -83,7 +80,7 @@ WHEN sum() of http.request.bytes OVER all documents IS ABOVE 3500 FOR THE LAST 1
   - **Vulnerability Mitigated**: Mitigate Denial of Service or XSS attack
   - **Reliability**: Low reliability because there are a lot of false positives on this alert and bad actors can split up their requests into multiple deployments or unusually large HTTP requests which are not malicious
   
-
+HTTP Request Results: (Images/HTTP-request.jpg)
 
 
 # Suggestions for Going Further
