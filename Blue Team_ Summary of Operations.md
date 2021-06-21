@@ -1,7 +1,7 @@
-#Blue Team: Summary of Operations
+**Blue Team: Summary of Operations**
 
 
-#Table of Contents
+**Table of Contents**
 - Network Topology
 - Description of Targets
 - Monitoring the Targets
@@ -9,7 +9,7 @@
 - Suggestions for Going Further
 
 
-#Network Topology
+**Network Topology**
 
 
 The following machines were identified on the network:
@@ -33,7 +33,7 @@ The following machines were identified on the network:
 Network Diagram: (/main/TargetEnvironment.pdf)
   
 
-#Description of Targets
+**Description of Targets**
 
 
 The target of this attack was: `Target 1` (192.168.1.110).
@@ -42,7 +42,7 @@ The target of this attack was: `Target 1` (192.168.1.110).
 Target 1 is an Apache web server and has SSH enabled, so ports 80 and 22 are possible ports of entry for attackers. As such, the following alerts have been implemented:
 
 
-#Monitoring the Targets
+**Monitoring the Targets**
 A scan reveals the ports and services running on the machine to show areas that could be used as potential points of entry for hackers.
   
 Scan results: (/Images/network_targets.jpg)
@@ -50,7 +50,7 @@ Scan results: (/Images/network_targets.jpg)
 Traffic to these services should be carefully monitored. To this end, we have implemented the alerts below:
 
 
-#Name of Alert 1
+**Name of Alert 1**
 CPU Usage Monitor is implemented as follows:
 WHEN max() OF system.process.cpu.total.pct OVER all documents IS ABOVE 0.5 FOR THE LAST 5 minutes
   - **Metric**: When max() of system.process.cpu.total.pct over all documents 
@@ -61,7 +61,7 @@ WHEN max() OF system.process.cpu.total.pct OVER all documents IS ABOVE 0.5 FOR T
 CPU Usage Results: (Images/CPU-alert.jpg)
 
 
-#Name of Alert 2
+**Name of Alert 2**
 Excessive HTTP Errors is implemented as follows:
 WHEN count() GROUPED OVER top 5 'http.response.status_code' IS ABOVE 400 FOR THE LAST 5 minutes
   - **Metric**: when count() grouped over top 5 http.response.status_code
@@ -72,7 +72,7 @@ WHEN count() GROUPED OVER top 5 'http.response.status_code' IS ABOVE 400 FOR THE
 HTTP Errors Results: (Images/HTTP-errors.jpg)
 
 
-#Name of Alert 3
+**Name of Alert 3**
 HTTP Request Size Monitor is implemented as follows:
 WHEN sum() of http.request.bytes OVER all documents IS ABOVE 3500 FOR THE LAST 1 minute
   - **Metric**: when sum() of http.request.bytes over all documents
@@ -83,7 +83,7 @@ WHEN sum() of http.request.bytes OVER all documents IS ABOVE 3500 FOR THE LAST 1
 HTTP Request Results: (Images/HTTP-request.jpg)
 
 
-# Suggestions for Going Further
+**Suggestions for Going Further**
 
 
 The logs and alerts generated during the assessment suggest that this network is susceptible to several active threats, identified by the alerts above. In addition to watching for occurrences of such threats, the network should be hardened against them. The Blue Team suggests that IT implement the fixes below to protect the network:
